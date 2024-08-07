@@ -25,8 +25,8 @@ router.get('/brand/:brandName', async(req, res) => {
       return fetch(`${BASE_URL}all-models-by/brandname/${req.params.brandName}/family/${familyName}`, options)
     })
     const responses = await Promise.all(requests)
-    const test = responses.map(async(r) => await r.json())
-    res.send(test)
+    const allModels = responses.flatten(Infinity)
+    res.send(allModels)
   } catch(err){
     console.log(err)
   }
