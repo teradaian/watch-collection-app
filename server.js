@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
 
+const apiController = require('./controllers/api.js')
 const authController = require('./controllers/auth.js');
 const watchesController = require('./controllers/watches.js')
 const collectionsController = require('./controllers/collections.js')
@@ -44,6 +45,7 @@ app.get('/', (req, res) => {
   });
 });
 
+app.use('/api', apiController);
 app.use(passUserToView)
 app.use('/auth', authController);
 app.use(isSignedIn)

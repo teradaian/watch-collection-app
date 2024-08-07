@@ -30,6 +30,7 @@ router.get('/new', async (req, res) => {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
+    console.log(result)
     res.render('watches/new.ejs', { result })
   } catch (error) {
     console.error(error);
